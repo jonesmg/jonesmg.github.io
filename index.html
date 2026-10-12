@@ -1,580 +1,338 @@
-<!DOCTYPE HTML>
-<!--
-	Prologue 1.2 by HTML5 UP
-	html5up.net | @n33co
-	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Mike Jones · Faint Galaxies</title>
+<meta name="description" content="Michael G. Jones, astronomer at Caltech/IPAC: faint dwarf galaxies, SEAMLESS, HCNS, HI-SAGA.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700&family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&family=JetBrains+Mono:wght@400;500&display=swap">
+<style>
+  /* Layout: full-bleed Milky Way hero, then 70rem features alternating image and text; one committed night-sky theme. */
+  :root{
+    color-scheme:dark;
+    --bg:#080d18; --panel:#101828; --ink:#e7ebf3; --muted:#9aa6bc; --line:#1f2a40; --accent:#9fcbff; --glow:#ffcf9a;
+    --rg-a:#1b2840; --rg-b:#9fcbff; --rg-c:#121b2c; --rg-ink:#e7ebf3; --rg-muted:#9aa6bc; --rg-on-b:#080d18;
+    --display:"Bricolage Grotesque", "Avenir Next", "Segoe UI", sans-serif;
+    --body:"Atkinson Hyperlegible", "Segoe UI", Roboto, Arial, sans-serif;
+    --mono:"JetBrains Mono", ui-monospace, Menlo, Consolas, monospace;
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth;background:var(--bg)}
+  @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{animation:none!important;transition:none!important}}
+  body{margin:0;background:var(--bg);color:var(--ink);font:400 1.03rem/1.7 var(--body)}
+  a{color:var(--accent);text-underline-offset:3px}
+  a:focus-visible,button:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+  .gut{padding-inline:1.25rem}
+  .inner{max-width:70rem;margin:0 auto}
+  .bar{position:absolute;inset:0 0 auto 0;z-index:3;padding-top:env(safe-area-inset-top,0px)}
+  .bar .inner{display:flex;flex-wrap:wrap;justify-content:flex-end;align-items:center;gap:.5rem 1.5rem;padding-block:1rem}
+  .bar .brand{font:700 1rem/1 var(--display);color:var(--ink);text-decoration:none;letter-spacing:.02em}
+  .bar ul{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:.25rem 1.2rem;font:500 .74rem/1.6 var(--mono);text-transform:uppercase;letter-spacing:.1em}
+  .bar ul a{color:var(--ink);text-decoration:none;opacity:.85}
+  .bar ul a:hover{opacity:1;color:var(--accent)}
+  .hero{position:relative;background:#04070e url("assets/milkyway.jpg") center 45%/cover no-repeat;padding-block:7.5rem 3.5rem}
+  .hero::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(8,13,24,.4) 0%,rgba(8,13,24,.05) 45%,var(--bg) 100%)}
+  .hero .inner{position:relative;z-index:1}
+  .kicker{font:500 .78rem/1.5 var(--mono);text-transform:uppercase;letter-spacing:.14em;color:var(--glow);margin:0 0 .75rem}
+  .hero h1{font:700 clamp(2.4rem,7vw,4.6rem)/1 var(--display);margin:0 0 1rem;letter-spacing:-.02em;text-wrap:balance}
+  .hero p.tag{font-size:clamp(1.05rem,2.2vw,1.3rem);max-width:38rem;margin:0 0 1.5rem;line-height:1.5}
+  .hero .links{display:flex;flex-wrap:wrap;gap:.6rem}
+  .btn{font:500 .8rem/1 var(--mono);padding:.65rem .95rem;border:1px solid rgba(231,235,243,.35);border-radius:3px;color:var(--ink);text-decoration:none;background:rgba(8,13,24,.45);backdrop-filter:blur(4px)}
+  .btn:hover{border-color:var(--accent);color:var(--accent)}
+  .addr{font:400 .8rem/1.6 var(--mono);color:var(--muted);margin-top:.9rem;user-select:all}
+  section{padding-block:4rem}
+  .sh{display:flex;flex-wrap:wrap;align-items:baseline;justify-content:space-between;gap:.5rem 2rem;margin-bottom:2rem;border-bottom:1px solid var(--line);padding-bottom:.75rem}
+  .sh h2{font:700 clamp(1.7rem,3.5vw,2.4rem)/1.1 var(--display);margin:0;letter-spacing:-.01em}
+  .sh p{margin:0;color:var(--muted);font:400 .8rem/1.5 var(--mono);text-transform:uppercase;letter-spacing:.1em}
+  .about{display:grid;grid-template-columns:13rem minmax(0,1fr);gap:2.5rem;align-items:start}
+  .about img{width:100%;aspect-ratio:4/5;object-fit:cover;border-radius:4px}
+  .about > div{max-width:42rem}
+  .feature{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:3rem;align-items:center;padding-block:3rem;border-top:1px solid var(--line)}
+  .feature:first-of-type{border-top:0;padding-top:0}
+  .feature.flip > .media{order:2}
+  .feature > div{min-width:0}
+  .feature .code{font:500 .76rem/1.5 var(--mono);color:var(--glow);text-transform:uppercase;letter-spacing:.12em;margin:0 0 .4rem}
+  .feature h3{font:700 clamp(1.5rem,3vw,2.1rem)/1.1 var(--display);margin:0 0 .35rem;text-wrap:balance}
+  .feature .full{font-style:italic;color:var(--muted);margin:0 0 1rem}
+  .feature .lede{font-size:1.15rem;line-height:1.5;margin:0 0 1rem}
+  .media img{width:100%;display:block;border-radius:4px;box-shadow:0 0 0 1px var(--line),0 30px 60px -30px rgba(159,203,255,.35)}
+  .media figcaption{font-size:.85rem;color:var(--muted);margin-top:.6rem;line-height:1.5}
+  .media figure{margin:0}
+  details{border-top:1px solid var(--line);margin-top:1rem}
+  summary{cursor:pointer;font:500 .8rem/1 var(--mono);text-transform:uppercase;letter-spacing:.1em;color:var(--accent);padding-block:.9rem;list-style:none}
+  summary::-webkit-details-marker{display:none}
+  summary::before{content:"+ "} details[open] summary::before{content:"− "}
+  .statgrid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1px;background:var(--line);border:1px solid var(--line);border-radius:4px;overflow:hidden}
+  .statgrid div{background:var(--panel);padding:1.1rem 1.2rem}
+  .statgrid div:last-child{grid-column:1/-1}
+  .statgrid b{display:block;font:700 2rem/1 var(--display);color:var(--accent);font-variant-numeric:tabular-nums}
+  .statgrid span{font:400 .75rem/1.4 var(--mono);color:var(--muted);text-transform:uppercase;letter-spacing:.08em}
+  .textpanel{background:var(--panel);border:1px solid var(--line);border-radius:4px;padding:1.5rem}
+  .textpanel dl{margin:0;display:grid;gap:1rem}
+  .textpanel dt{font:400 .74rem/1.4 var(--mono);color:var(--muted);text-transform:uppercase;letter-spacing:.1em}
+  .textpanel dd{margin:.15rem 0 0;font:500 1.05rem/1.4 var(--display)}
+  .regime{width:100%;height:auto;display:block;font-family:var(--mono)}
+  .regime-wrap{background:var(--panel);border:1px solid var(--line);border-radius:4px;padding:1.25rem 1.25rem .75rem;margin-top:2rem}
+  .regime-wrap p{margin:.5rem 0 0;color:var(--muted);font-size:.88rem}
+  .tbl-wrap{overflow-x:auto}
+  table.disc{border-collapse:collapse;width:100%;font-size:.92rem;margin-top:.5rem}
+  table.disc th,table.disc td{text-align:left;padding:.5rem .9rem .5rem 0;border-bottom:1px solid var(--line);vertical-align:top}
+  table.disc thead th{font:500 .7rem/1.4 var(--mono);text-transform:uppercase;letter-spacing:.1em;color:var(--muted)}
+  table.disc tbody th{font-family:var(--display);font-weight:700}
+  table.disc td:nth-child(2){font-family:var(--mono);font-size:.85rem;white-space:nowrap}
+  .refs{font-size:.9rem;color:var(--muted)}
+  .past{display:grid;grid-template-columns:repeat(auto-fit,minmax(15rem,1fr));gap:1.25rem}
+  .pcard{background:var(--panel);border:1px solid var(--line);border-radius:4px;overflow:hidden;display:flex;flex-direction:column}
+  .pcard img{width:100%;aspect-ratio:16/9;object-fit:cover;display:block;opacity:.9}
+  .pcard .noimg{aspect-ratio:16/9;display:grid;place-items:center;font:700 1.4rem/1 var(--display);color:var(--line);background:linear-gradient(135deg,var(--panel),var(--bg))}
+  .pcard > div{padding:1rem 1.1rem 1.1rem}
+  .pcard h3{font:700 1.1rem/1.25 var(--display);margin:0 0 .35rem}
+  .pcard p{margin:0 0 .5rem;font-size:.93rem;color:var(--muted);line-height:1.55}
+  .pubcols{display:grid;grid-template-columns:minmax(0,1.4fr) minmax(0,1fr);gap:3rem}
+  .pubcols > div{min-width:0}
+  .pubcols h3{font:500 .78rem/1.4 var(--mono);text-transform:uppercase;letter-spacing:.12em;color:var(--glow);margin:0 0 1rem}
+  ul.pubs{list-style:none;padding:0;margin:0}
+  li.pub{display:flex;flex-direction:column;padding-block:.6rem;border-bottom:1px solid var(--line)}
+  .pub-title{color:var(--ink);text-decoration:none;line-height:1.4}
+  .pub-title:hover{color:var(--accent)}
+  .pub-meta{font:400 .78rem/1.6 var(--mono);color:var(--muted)}
+  .pub-meta b{color:var(--ink);font-weight:500}
+  .talks{list-style:none;padding:0;margin:0}
+  .talks li{padding-block:.6rem;border-bottom:1px solid var(--line)}
+  .talks .v{display:block;font:400 .78rem/1.6 var(--mono);color:var(--muted)}
+  .out{display:grid;grid-template-columns:repeat(auto-fit,minmax(15rem,1fr));gap:1.5rem}
+  .out h3{font:700 1.1rem/1.2 var(--display);margin:0 0 .35rem}
+  .out p{margin:0;color:var(--muted);font-size:.95rem}
+  footer{border-top:1px solid var(--line);padding-block:2rem 3rem;font:400 .76rem/1.6 var(--mono);color:var(--muted)}
+  .gallery{columns:3 16rem;column-gap:1rem}
+  .ph{break-inside:avoid;margin:0 0 1rem;position:relative}
+  .ph img{width:100%;display:block;border-radius:3px}
+  .ph figcaption{font:400 .74rem/1.4 var(--mono);color:var(--muted);padding:.45rem 0 0}
+  .pano{overflow-x:auto;margin-bottom:.5rem}
+  .pano img{height:18rem;width:auto;max-width:none;display:block}
+  @media (max-width:820px){.feature,.pubcols{grid-template-columns:1fr;gap:1.5rem}.feature.flip > .media{order:0}.about{grid-template-columns:1fr}.about img{max-width:11rem}}
+  @media (max-width:520px){.hero{padding-block:9rem 2.5rem}.bar ul{gap:.15rem .9rem}}
+</style>
+</head>
+<body>
+<div class="hero gut">
+  <header class="bar gut">
+    <div class="inner">
+      <nav aria-label="Main">
+        <ul>
+          <li><a href="#about">About</a></li>
+          <li><a href="#research">Research</a></li>
+          <li><a href="photography.html">Photography</a></li>
+          <li><a href="docs/CV_MichaelGJones.pdf">CV</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <div class="inner">
+    <p class="kicker">Extragalactic astronomer · Caltech/IPAC</p>
+    <h1>Michael G. Jones</h1>
+    <p class="tag">I study gas and star formation in low-mass galaxies.</p>
+    <div class="links">
+      <a class="btn" href="mailto:mgjones@ipac.caltech.edu">Email</a>
+      <a class="btn" href="docs/CV_MichaelGJones.pdf">CV (PDF)</a>
+      <a class="btn" href="https://scixplorer.org/public-libraries/jPBAQKwOSiyf2zX9xo6e9A">Publications (SciX)</a>
+      <a class="btn" href="https://orcid.org/0000-0002-5434-4904">ORCID</a>
+      <a class="btn" href="https://github.com/jonesmg">GitHub</a>
+    </div>
+    <p class="addr">mgjones@ipac.caltech.edu</p>
+  </div>
+</div>
+<section class="gut" id="about">
+  <div class="inner">
+    <div class="sh">
+      <h2>About</h2>
+      <p>Staff Scientist, NASA/IPAC Infrared Science Archive (IRSA)</p>
+    </div>
+    <div class="about">
+      <img src="assets/portrait.jpg" alt="Portrait of Mike Jones">
+      <div>
+        <p>I'm an extragalactic astronomer and a staff scientist in the NASA/IPAC Infrared Science Archive (<a href="https://irsa.ipac.caltech.edu">IRSA</a>) at Caltech/IPAC. My research focuses on the lowest-mass galaxies in the nearby Universe: how we find them, how they form stars, and how they lose their gas. Small galaxies are among the most sensitive means we have to test models of galaxy formation and cosmology. At IRSA I also work on making the archive easier to use, including prototype large language model assistants.</p>
+        <p>Before joining IPAC in 2025 I was a postdoc with David Sand at the University of Arizona, and before that a Juan de la Cierva fellow at the Instituto de Astrofísica de Andalucía in Granada, where I worked with Lourdes Verdes-Montenegro. I received my PhD from Cornell University in 2016, working with Martha Haynes and Riccardo Giovanelli on the <a href="https://alfalfasurvey.github.io/index.html">ALFALFA</a> survey, and my undergraduate degree in Natural Sciences (Astrophysics) from the University of Cambridge. Outside work I hike, cycle, and take photographs, including some astrophotography.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="gut" id="research">
+  <div class="inner">
+    <div class="sh">
+      <h2>Current research</h2>
+      <p></p>
+    </div>
+    <article class="feature" id="seamless">
+      <div class="media">
+        <figure>
+          <img src="assets/pavo.jpg" alt="Pavo in DESI Legacy Surveys imaging. The blue knots are young stars; the faint red haze that extends much further is the ancient stellar population." loading="lazy">
+          <figcaption>Pavo in DESI Legacy Surveys imaging. Its brightest stars are almost resolved into individual point sources, giving it the characteristic mottled, semi-resolved appearance that SEAMLESS searches for.</figcaption>
+        </figure>
+      </div>
+      <div>
+        <p class="code"></p>
+        <h3>SEAMLESS</h3>
+        <p class="full">SEmi-Automated Machine LEarning Search for Semi-resolved galaxies</p>
+        <p class="lede">A machine-learning search of the DESI Legacy Surveys for faint dwarf galaxies just beyond the Local Group.</p>
+        <p>Our current knowledge of the faintest galaxies is still dominated by the Milky Way's own satellites. Those galaxies have all lived inside a massive halo, so their gas, star formation, and structure have been shaped by their host. To learn how the smallest galaxies evolve on their own, we need to find them in isolation, and that means looking beyond the Local Group.</p>
+        <details>
+          <summary>Read more</summary>
+          <p>Searching for dwarf galaxies through concentrations of resolved stars work well within about 1&ndash;1.5 Mpc, and searches for diffuse, low surface brightness light work well at much larger distances. In between, at roughly 1.5&ndash;4 Mpc, a faint dwarf is <i>semi-resolved</i>: its brightest stars appear as a scatter of point-like sources sitting on top of a faint haze of unresolved light. Both classic methods tend to miss or overlook these objects.</p>
+          <p>SEAMLESS is built for this semi-resolved regime. We run a low surface brightness detection pipeline, adapted from <a href="https://ui.adsabs.harvard.edu/abs/2019ApJS..240....1Z/abstract">SMUDGes</a>, over the public DR10 imaging of the DESI Legacy Imaging Surveys. A convolutional neural network, retrained specifically to identify semi-resolved objects, then scores each candidate, and the team visually inspects the most promising ones before follow-up with Gemini, Magellan, HST, GBT, VLA, and MeerKAT.</p>
+          <p>The first discovery was <b>Pavo</b>, one of the lowest-mass star-forming galaxies known, at distance of about 2 Mpc and with no known neighbours. Its proximity and isolation make it an ideal place to study how cosmic reionization and stellar feedback regulate star formation in the smallest galaxies. SEAMLESS has since discovered other isolated, star-forming dwarfs such as Corvus A, and quenched dwarfs such as Hydrus A.</p>
+          <p class="refs"><a href="https://scixplorer.org/public-libraries/vQieQ3peTPGixQY3_kO-Iw">All SEAMLESS papers on SciX →</a></p>
+        </details>
+      </div>
+    </article>
+
+    <article class="feature flip" id="hcns">
+      <div class="media">
+        <div class="statgrid">
+          <div>
+            <b>149</b>
+            <span>new HST orbits</span>
+          </div>
+          <div>
+            <b>111</b>
+            <span>archival satellites</span>
+          </div>
+          <div>
+            <b>≈260</b>
+            <span>satellites</span>
+          </div>
+          <div>
+            <b>22</b>
+            <span>Milky Way-like hosts</span>
+          </div>
+          <div>
+            <b>10 Mpc</b>
+            <span>distance limit</span>
+          </div>
+        </div>
+      </div>
+      <div>
+        <p class="code"></p>
+        <h3>Hubble Census of Nearby Satellites</h3>
+        <p class="lede">An HST Treasury program to image every satellite brighter than M<sub>V</sub> = &minus;9 around a Milky Way-like galaxy within 10 Mpc.</p>
+        <p>Until recently the Local Group was the only place where the census of the satellite populations was relatively complete down to faint satellites. Ground-based surveys, in particular the <a href="https://scixplorer.org/abs/2022ApJ...933...47C/abstract">ELVES</a> project, have now pushed that completeness out to a few dozen Milky Way-like systems within the Local Volume, but robust confirmation of these satellites and measuring their properties needs the resolution of Hubble.</p>
+        <details>
+          <summary>Read more</summary>
+          <p>The Hubble Census of Nearby Satellites (HCNS) is a 149-orbit Treasury program that is building on the ELVES legacy data set by imagining 149 satellites with WFC3/UVIS and ACS/WFC in F606W and F814W. Combined with 111 satellites that already have archival HST imaging, it forms a volume-limited sample of about 260 satellite candidates around 22 Milky Way-like hosts.</p>
+          <p>With this sample we will measure the most robust satellite luminosity function to date, extend the globular cluster luminosity function to lower galaxy masses than ever before, and derive star formation histories and quenching times for an unprecedented number of satellites.</p>
+        </details>
+      </div>
+    </article>
+
+    <article class="feature" id="blobs">
+      <div class="media">
+        <figure>
+          <img src="assets/bc5_hst.jpg" alt="HST image of BC5, one of the blue blobs in Virgo. It is clumpy and irregular, and consists entirely of young blue stars." loading="lazy">
+          <figcaption>HST image of BC5, one of the blue blobs in Virgo. It is clumpy and irregular, and consists entirely of young blue stars.</figcaption>
+        </figure>
+      </div>
+      <div>
+        <p class="code"></p>
+        <h3>Blue blobs and dark clouds in Virgo</h3>
+        <p class="lede">Young, isolated stellar systems and almost dark gas clouds formed from stripped gas in the Virgo cluster.</p>
+        <p>Galaxy clusters are a hostile place for cold gas: the hot intracluster medium (ICM) strips gas from galaxies via ram pressure as they fall into the potential well of the cluster. It was therefore remarkable when we identified a new class of object in the Virgo cluster: tiny, stellar systems, made up entirely of young, metal-rich stars, isolated from any nearby galaxy, but embedded in the hot ICM. Their metallicity means they formed from gas stripped out of a massive galaxy, and their isolation points to ram pressure stripping, which can occur at very high velocities. Yet how they survive to form new stars while bathed in the hot ICM is not yet well understood.</p>
+        <details>
+          <summary>Read more</summary>
+          <p>These "blue blobs" are related to the dark HI clouds in Virgo, gas clouds that seem to have no stars. We found the very faint stellar counterpart (BC6) of one such cloud that had been thought to be entirely dark since its discover almost two decades prior, providing a link between the two populations. Volunteers in our Zooniverse project made more than 600,000 classifications to finding new blue blobs candidates, some of which we were able to match to known "dark" clouds through spectroscopic observations with the Hobby-Eberly Telescope. We are now expanding our follow up programs with ALMA (molecular gas), GBT (HI), and a new 26-hour JWST program (GO-10165) for deep NIRCam and MIRI imaging.</p>
+          <p class="refs"><a href="https://scixplorer.org/public-libraries/Pteg58ilQLq1s5ZCkOOrLA">All blue blobs papers on SciX →</a></p>
+        </details>
+      </div>
+    </article>
+
+    <article class="feature flip" id="hi-saga">
+      <div class="media">
+        <figure>
+          <img src="assets/HISAGA_gas_stripping.png" alt="HI contours over optical imaging of LS-359104-131, a satellite of NGC 7541, showing a long one-sided gas tail." loading="lazy">
+          <figcaption>VLA C+D HI contours overlaid on DESI Legacy Surveys imaging of LS-359104-131, a satellite of NGC 7541. The gas extends into a long, one-sided tail, a likely sign that it is being ram pressure stripped.</figcaption>
+        </figure>
+      </div>
+      <div>
+        <p class="code"></p>
+        <h3>HI-SAGA</h3>
+        <p class="full">HI in Satellites Around Galactic Analogs</p>
+        <p class="lede">Measuring the neutral gas in satellites of Milky Way analogs to learn how and when satellites stop forming stars.</p>
+        <p>Almost all of the Milky Way's satellites are gas-poor and no longer forming stars, but the <a href="https://sagasurvey.org/">SAGA</a> (Satellites Around Galactic Analogs) survey found that satellites of other Milky Way-like galaxies are often star-forming. Is our own system an outlier among other systems of similar mass, or are we missing part of the picture?</p>
+        <details>
+          <summary>Read more</summary>
+          <p>HI-SAGA is a spin-off of SAGA that measures the neutral hydrogen (HI) content of SAGA satellites. Gas is the fuel for star formation, so knowing how much HI a satellite still holds, and whether that gas is being disturbed or stripped, gives an indications of how efficiently satellites are quenched after they fall into their host's halo. Mapping of HI with the VLA D-configuration is an efficient means of determining both how much gas each satellite has as well as the large-scale distribution of that gas, thus revealing candidates that are likely undergoing gas stripping and should be followed up with higher resolution observations.</p>
+          <p class="refs"><a href="https://ui.adsabs.harvard.edu/abs/2024ApJ...966...93J/abstract">Jones et al. 2024 →</a></p>
+        </details>
+      </div>
+    </article>
+
+  </div>
+</section>
+
+<section class="gut" id="past">
+  <div class="inner">
+    <div class="sh">
+      <h2>Past research</h2>
+      <p></p>
+    </div>
+    <div class="past">
+      <div class="pcard">
+        <img src="assets/HUDs_NGC_MV.jpg" alt="" loading="lazy">
+        <div>
+          <h3>Gas-rich ultra-diffuse galaxies</h3>
+          <p>Measured the cosmic abundance of HI-bearing UDGs found in ALFALFA, led an HST snapshot program showing they host few globular clusters, and found evidence that some UDGs form through tidal heating of normal dwarfs.</p>
+          <p class="refs"><a href="https://ui.adsabs.harvard.edu/abs/2018A%26A...614A..21J">Jones+18b</a>, <a href="https://ui.adsabs.harvard.edu/abs/2021ApJ...919...72J">Jones+21</a>, <a href="https://ui.adsabs.harvard.edu/abs/2023ApJ...942L...5J">Jones+23a</a></p>
+        </div>
+      </div>
+      <div class="pcard">
+        <img src="assets/hcg16.jpg" alt="" loading="lazy">
+        <div>
+          <h3>Isolated galaxies vs. dense groups</h3>
+          <p>Compared galaxies that have evolved on their own in isolation with those in the densest environments. With AMIGA I defined the HI content of several hundred of the most isolated galaxies known, a nurture-free baseline, and then used it to trace how Hickson Compact Groups lose their gas through repeated interactions, from a detailed study of HCG 16 to a global census of HI in compact groups.</p>
+          <p class="refs"><a href="https://ui.adsabs.harvard.edu/abs/2018A%26A...609A..17J">Jones+18a</a>, <a href="https://ui.adsabs.harvard.edu/abs/2019A%26A...632A..78J">Jones+19</a>, <a href="https://ui.adsabs.harvard.edu/abs/2023A%26A...670A..21J">Jones+23b</a></p>
+        </div>
+      </div>
+      <div class="pcard">
+        <img src="assets/ALFALFA_HIMF.jpeg" alt="" loading="lazy">
+        <div>
+          <h3>ALFALFA and the HI mass function</h3>
+          <p>Measured the HI mass function from the complete ALFALFA survey and its dependence on environment, and quantified source confusion in HI surveys and stacking.</p>
+          <p class="refs"><a href="https://ui.adsabs.harvard.edu/abs/2015MNRAS.449.1856J">Jones+15</a>, <a href="https://ui.adsabs.harvard.edu/abs/2016MNRAS.455.1574J">Jones+16a</a>, <a href="https://ui.adsabs.harvard.edu/abs/2016MNRAS.457.4393J">Jones+16b</a>, <a href="https://ui.adsabs.harvard.edu/abs/2018MNRAS.477....2J">Jones+18c</a>, <a href="https://ui.adsabs.harvard.edu/abs/2020MNRAS.494.2090J">Jones+20</a></p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- OUTREACH SECTION (hidden; delete this comment wrapper to restore, and add an Outreach link to the nav)
+<section class="gut" id="outreach">
+  <div class="inner">
+    <div class="sh">
+      <h2>Mentoring &amp; outreach</h2>
+      <p>Students · citizen science · public talks</p>
+    </div>
+    <div class="out">
+      <div>
+        <h3>Mentoring</h3>
+        <p>I supervise a post-baccalaureate researcher at IRSA, mentored a Caltech SURF student on HCNS, and have advised many undergraduates (and a high school AP Research student) on their first astronomy research projects at Cornell, Arizona, and elsewhere.</p>
+      </div>
+      <div>
+        <h3>Citizen science & outreach</h3>
+        <p>With students I built a Zooniverse project to find faint dwarfs and blue blobs in public imaging; over 1,800 volunteers have contributed more than 600,000 classifications. I have also given a public talk at Tucson's Astronomy on Tap, a <a href="https://www.kold.com/2022/06/19/out-this-world-discovery-how-tucson-astronomers-played-part-finding-new-stellar-system/">local TV interview</a> on the blue blobs, and taken part in many outreach events at Cornell.</p>
+      </div>
+    </div>
+  </div>
+</section>
 -->
-<html>
-	<head>
-		<title>Michael Jones</title>
-		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
-		<meta name="description" content="" />
-		<meta name="keywords" content="" />
-		<link href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,400,600" rel="stylesheet" type="text/css" />
-		<!--[if lte IE 8]><script src="js/html5shiv.js"></script><![endif]-->
-		<script src="js/jquery.min.js"></script>
-		<script src="js/skel.min.js"></script>
-		<script src="js/skel-panels.min.js"></script>
-		<script src="js/init.js"></script>
-		<noscript>
-			<link rel="stylesheet" href="css/skel-noscript.css" />
-			<link rel="stylesheet" href="css/style.css" />
-			<link rel="stylesheet" href="css/style-wide.css" />
-		</noscript>
-		<!--[if lte IE 9]><link rel="stylesheet" href="css/ie9.css" /><![endif]-->
-		<!--[if lte IE 8]><link rel="stylesheet" href="css/ie8.css" /><![endif]-->
-		<meta name="viewport" content="width=device-width, initial-scale=1">
-		<style>
-		.collapsible {
-  			background-color: #8ebebc;
-  			color: white;
-  			cursor: pointer;
-  			padding: 18px;
-  			width: 100%;
-  			border: none;
-  			text-align: center;
-  			outline: none;
-  			font-size: 16px;
-		}
 
-		.active, .collapsible:hover {
-  			background-color: #555;
-		}
+<footer class="gut">
+  <div class="inner">
+    © 2026 Michael G. Jones · Header image: the Milky Way, photographed by the author.
+  </div>
+</footer>
 
-		.content {
-  			padding: 0 16px;
-  			max-height: 0;
-  			overflow: hidden;
-  			transition: max-height 0.2s ease-out;
-  			background-color: #f1f1f1;
-		}
-	</style>
-	</head>
-	<body>
-
-		<!-- Header -->
-			<div id="header" class="skel-panels-fixed">
-
-				<div class="top">
-
-					<!-- Logo -->
-						<div id="logo">
-							<span class="image avatar60"><img src="images/mgj_portrait_crop.jpg" alt="" /></span>
-							<h1 id="title"> Michael Jones </h1>
-							<span class="byline">Astronomy PhD</span>
-						</div>
-
-					<!-- Nav -->
-						<nav id="nav">
-
-
-							<!--
-							
-								Prologue's nav expects links in one of two formats:
-								
-								1. Hash link (scrolls to a different section within the page)
-								
-								   <li><a href="#foobar" id="foobar-link" class="skel-panels-ignoreHref"><span class="fa fa-whatever-icon-you-want">Foobar</span></a></li>
-
-								2. Standard link (sends the user to another page/site)
-
-								   <li><a href="http://foobar.tld"><span class="fa fa-whatever-icon-you-want">Foobar</span></a></li>
-							
-							-->
-							<ul>
-								<li><a href="#top" id="top-link" class="skel-panels-ignoreHref"><span class="fa fa-user">About Me</span></a></li>
-								<li><a href="#research" id="research-link" class="skel-panels-ignoreHref"><span class="fa fa-lightbulb-o">Research</span></a></li>
-								<li><a href="#cv" id="cv-link" class="skel-panels-ignoreHref"><span class="fa fa-list-ul">CV</span></a></li>
-								<li><a href="#outreach" id="outreach-link" class="skel-panels-ignoreHref"><span class="fa fa-sun-o">Outreach & Teaching</span></a></li>
-								<li><a href="#photography" id="photography-link" class="skel-panels-ignoreHref"><span class="fa fa-camera">Photography</span></a></li>
-								
-							</ul>
-						</nav>
-						
-				</div>
-				
-				<div class="bottom">
-
-					<!-- Social Icons -->
-						<ul class="icons">
-							<li><a href="mailto:jonesmg@arizona.edu" class="fa fa-envelope solo"><span>Email</span></a></li>
-						</ul>
-				
-				</div>
-			
-			</div>
-
-		<!-- Main -->
-			<div id="main">
-			
-				<!-- Intro -->
-					<section id="top" class="one">
-						<a href="#" class="image featured"><img src="images/Milky Way.JPG" alt="" /></a>
-						<div class="container">
-
-							<!--<a href="#" class="image featured"><img src="images/Milky Way.jpg" alt="" /></a>-->
-
-							<header>
-								<h2 class="alt"><strong>About Me</strong></h2>
-							</header>
-							
-							<p>I'm Mike Jones, an extragalactic astronomer and a staff scientist working in the Infrared Science Archive (IRSA) at Caltech/IPAC. My research focuses on low-mass galaxies in the local Universe, in particular those which push the boundaries of our current understanding of galaxy formation. I was previously a post-doc at the University of Arizona and a Juan de la Cierva post-doctoral fellow at the Instituto de Astrofísica de Andalucía. I graduated with a PhD in Astronomy from Cornell University in 2016, where I worked with Martha Haynes and Riccardo Giovanelli on the <a href="http://egg.astro.cornell.edu/alfalfa/">ALFALFA</a> survey. I gained my undergraduate degree in Natural Sciences (Astrophysics) from the University of Cambridge in 2011. I love the outdoors and regularly hike and cycle. I am also fond of photography, including astrophotography.</p>
-
-							
-						</div>
-					</section>
-					
-				<!-- research -->
-					<section id="research" class="two">
-						<div class="container">
-					
-							<header>
-								<h2>Research</h2>
-							</header>
-							
-							<button type="button" class="collapsible">Pavo: One of the lowest mass star-forming galaxies known</button>
-							<div class="content">
-								<p>When galaxies first began forming stars en masse the UV radiation that they emitted heated and ionized most of the neutral gas in the universe in an era known as the epoch of reionization (re- because immediately after the big bang the universe was entirely ionized, then cooled and became neutral). For the lowest mass galaxies reionization eliminated their entire cold gas reservoir and prevented them from forming new star ever again. At just marginally higher mass are the lowest mas star-forming galaxies in the universe, that were just large enough to hang on to some of their gas through reionization. However, these galaxies are extraordinarily faint and difficult to identify, so very few are known. Furthermore, if they fall into the gravitational well of a massive galaxy, like our own Milky Way, then they will rapidly be stripped of their gas and stop forming stars. Thus, to find these galaxies you have to look beyond our Local Group of galaxies.
-
-								<p>I led a novel search effort (<a href="https://ui.adsabs.harvard.edu/abs/2023arXiv231001478J/abstract">Jones et al. 2023</a>) to identify such galaxies in the <a href="https://www.legacysurvey.org/">DESI Legacy Imaging Surveys</a> that combined established low surface brightness galaxy search algorithms and a machine learning candidate classifier. In this search we identified Pavo, one of the lowest mass star-forming galaxies known. Pavo is only 2 Mpc (6.5 Mly) away from us, but is remarkably isolated with absolutely no apparent neighbours. This relative proximity to us, combined with its isolation, make Pavo an excellent target to study how star formation proceeds in the lowest mass galaxies, and to study the impact that reionization had on star-forming in the early universe. Did it only just survive reionization, or was it more of a speed bump?</p>
-
-								<div class="row" width="100%">
-								
-									<div class="6u">
-										<article class="item">
-											<a class="image full"><img src="images/pavo_cutout.jpg" alt="" /></a>
-										</article>
-									<article class="item">
-									</div>
-									<header>
-									<h8>DESI Legacy Imaging Survey cutout of Pavo. The blue light tracers only the youngest stars, but Pavo extends much further as a faint, almost imperceptible distribution of redder stars. These red stars are the ancient population formed in the early universe.</h8>
-									<header>
-									</article>
-								</div>
-							</div>
-
-<br>
-
-							<button type="button" class="collapsible">Young isolated stellar systems in the Virgo cluster</button>
-							<div class="content">
-								<p>Galaxy clusters are filled with an intra-cluster medium of hot gas that makes them an extremely hostile environment for any galaxy containing the cool gas needed to form stars. Even fairly massive galaxies like our own Milky Way would be rapidly stripped of gas when they fall into a galaxy cluster. Hence our surprise when in <a href="https://ui.adsabs.harvard.edu/abs/2022arXiv220501695J/abstract">Jones et al. 2022</a> we identified a new class of isolated stellar system in the Virgo cluster, which are typically 1 million times less massive that the Milky Way, but are made up entirely of recently formed stars. These objects are also very metal-rich for their mass. Generally elements heavier than helium are built up in galaxies through successive episodes of star formation. Some of these blue stellar systems have metallicities comparable to the Milky Way, indicating that they formed from gas stripped from galaxies similar to our own (as they could never have built up some many metals on their own).
-
-								<p>Even if these "blue blobs" did form from stripped gas, the question remains, what process stripped the gas and how did they get so isolated? Gas is stripped from galaxies in two ways, tidal stripping and ram pressure stripping. Tidal stripping occurs due to the gravity of another galaxy passing nearby that pulls the outskirts of the first galaxy towards it. Ram pressure stripping occurs when a gas-rich galaxy is travelling at high speed through a hot gas medium (like in a galaxy cluster) and the pressure of this gas forces out its own gas. This is like running into the wind or belly flopping into a swimming pool, except your body is solid, not made of gas. Although either of these mechanisms could be responisble for creating the blue stellar systems we discovered, only ram pressure stripping can explain their isolation because it occurs at such high speeds. This way these objects can become separated from their parent galaxies by great distances while they are still very young.</p>
-
-								<div class="row" width="100%">
-								
-									<div class="6u">
-										<article class="item">
-											<a class="image full"><img src="images/BlueCand5_HST_RGB_aperture.jpg" alt="" /></a>
-										</article>
-									</div>
-									<div class="6u">
-										<article class="item">
-											<a class="image"><img src="images/BlueCand5_GALEX_colour_aperture.jpg" alt="" /></a>								
-										</article>
-									</div>
-									<article class="item">
-									<header>
-									<h8>Left: A Hubble Space Telescope image of one of the young, isolated stellar systems in Virgo, named BC5. It has a clumpy and irregular structure and appears to consistent of only young blue stars. Right: An image of the same field but in UV (from GALEX), indicating where star formation has occurred recently.</h8>
-									<header>
-									</article>
-								</div>
-							</div>
-
-<br>
-
-
-							<button type="button" class="collapsible">Gas-rich ultra-diffuse galaxies</button>
-							<div class="content">
-								<p>Ultra-diffuse galaxies, or UDGs, are a class of recently identified extremely low surface brightness (LSB) galaxies which have been principally found in galaxy clusters. While astronomers have been studying LSB galaxies for decades, including some which are now classified as UDGs, the striking results of <a href="http://adsabs.harvard.edu/abs/2015ApJ...798L..45V">van Dokkum et al. 2015</a> and <a href="http://adsabs.harvard.edu/abs/2015ApJ...807L...2K">Koda et al. 2015</a> show just how prevalent they are, even at the lowest surface brightnesses and in dense cluster environments. There are many open questions about the formation and survival of these galaxies and their connection to the other LSB galaxies and normal galaxies.</p>
-
-								<p>While the vast majority of UDGs are red, spheroidal objects located in or around groups and clusters, <a href="http://adsabs.harvard.edu/abs/2017ApJ...842..133L">Leisman et al. 2017</a> identified a sample of isolated, blue, HI-bearing UDGs (HUDs) that were strongly detected as HI sources in ALFALFA, but have almost invisible optical counterparts in the <a href="https://www.sdss.org/">Sloan Digital Sky Survey</a>. In <a href="http://adsabs.harvard.edu/abs/2018A%26A...614A..21J">Jones et al. 2018c</a> we measured the cosmic number density of these source by comparison with the global ALFALFA population, and found that although many fewer HUDs than red UDGs have been found to date, their overall abundances are likely quite similar. However, the connection between HUDs and red UDGs remains uncertain; they may be two phases of one population or two completely separate populations.</p>
-								
-								<p>I am the PI of a Hubble Space Telescope snapshot program to investigate the the globular systems of HUDs and compare them to both those of normal galaxies and UDGs in denser environments. As globular clusters are thought to form early on in a galaxy's life cycle a comparison of these systems should help to reveal whether there is a deeper connection between HUDs and other UDGs, or if they really are separate populations with separate formation pathways.</p>
-
-								<div class="row" width="100%">
-								
-									<div class="6u">
-										<article class="item">
-											<a class="image full"><img src="images/HUD_examples.jpg" alt="" /></a>
-										</article>
-									</div>
-									<div class="6u">
-										<article class="item">
-											<a class="image"><img src="images/HUDs_num_den.jpg" alt="" /></a>								
-										</article>
-									</div>
-									<article class="item">
-									<header>
-									<h8>Left: Two examples of HUDs from <a href="http://adsabs.harvard.edu/abs/2017ApJ...842..133L">Leisman et al. 2017</a>, showing that they are almost invisible in SDSS images (top row), but are confidently detected in CFHT imaging and show more complex structure. Right: Figure from <a href="http://adsabs.harvard.edu/abs/2018A%26A...614A..21J">Jones et al. 2018c</a> showing that the cosmic abundance of HUDs (green band) in similar to that of red UDGs found in groups and clusters (grey band). The latter was calculated by integrating the relationship between halo mass and number of UDGs (measured by <a href="https://ui.adsabs.harvard.edu/abs/2017A%26A...607A..79V/abstract">van der Burg et al. 2017</a>) over the halo mass function (from high to low masses).</h8>
-									<header>
-									</article>
-								</div>
-							</div>
-
-<br>
-
-							<button type="button" class="collapsible">AMIGA: A control sample of isolated galaxies</button>
-							<div class="content">
-  								<p>The <a href="http://www.amiga.iaa.es">AMIGA</a> project (Analysis of the interstellar Medium of Isolated GAlaxies) focuses on a population of carefully selected, isolated galaxies and has collected a rich multi-wavelength dataset to characterise their properties. This sample defines a benchmark for galaxies that reside in an almost nurture-free environment and thus acts as a control sample for studies of the impact on interactions on galaxy properties, whether it be star formation rates, gas content, AGN activity, or numerous others. In addition, these galaxies form an ideal laboratory for investigating secular evolution in galaxies, as the influence of neighbours is minimised.</p>
-
-								<p>In <a href="http://adsabs.harvard.edu/abs/2018A%26A...609A..17J">Jones et al. 2018a</a> I used the global HI profiles of several hundred isolated galaxies, observed by the AMIGA team or gathered from the literature, to define a new standard for the HI content of galaxies in the absence of interactions. The resulting optical to HI scaling relations had not been updated for the most isolated galaxies since <a href="http://adsabs.harvard.edu/abs/1984AJ.....89..758H">Haynes & Giovanelli 1984</a>, with most of the other recent scaling relations being measured with sources from HI surveys, which are intrinsically biased towards gas-rich galaxies. The increased sample size, morphological diversity, and improved maximum likelihood fitting method also gave more self-consistent relations than found previously.</p>
-							</div>
-
-<br>
-
-
-							<button type="button" class="collapsible">Hickson Compact Groups</button>
-							<div class="content">
-								<p>Hickson Compact Groups (HCGs) are extremely dense groups of 4-10 galaxies in the local Universe. HCG 16 is a prototypical case of a compact group of galaxies in an intermediate stage of evolution, where its neutral gas has been heavily disturbed, but not yet lost or consumed (as hypothesised by <a href="https://ui.adsabs.harvard.edu/abs/2001A%26A...377..812V/abstract">Verdes-Montenegro et al. 2001</a>). The group is made up of two spirals with low star formation rates, and two star bursting lenticulars. There is a 5th galaxy (NGC 848) to the south-east which optically might not appear to have interacted with the core group, but in HI is clearly connected to it by a ~160 kpc long tidal tail.</p>
-
-
-								<p>Although most of the extended HI gas resides in the vicinity of the two lenticular galaxies, comparison with scaling relations reveal that neither of these are deficient in HI. In fact the only HI-deficient galaxies in the group are the two spirals, which have both lost over 90% of their expected HI content. This led us to conclude in <a href="https://ui.adsabs.harvard.edu/abs/2019A%26A...632A..78J/abstract">Jones et al. 2019</a> that most of the extended HI was likely disrupted by the passage of NGC 848, but was probably already loosely bound due to the ongoing interaction between the two spirals. Furthermore, the tidal tail to the SE is actually considerably longer than it appears and forms a continuous structure from NGC 848 all the way to the NW corner of the group. Finally, there is a strong candidate tidal dwarf galaxy between the two galaxy pairs, that is also right on the boundary of being classified as an ultra-diffuse galaxy.</p>
-								
-								<p>An interaction 3D representation of the gas in HCG 16 can be found <a href="https://amiga.iaa.csic.es/X3D/HCG16/HCG16.html">here</a>.</p>
-
-								<div class="row" width="100%">
-								
-									
-									<article class="item">
-										<a class="image full"><img src="images/HCG16_pvslice.jpg" alt="" /></a>
-									</article>
-									<article class="item">
-									<header>
-									<h8>Bottom Left: Map of the integrated HI emission in the group. Bottom Right: Optical r-band image of the group from DECaLS. Top: A segmented position-velocity slice (shown with the red line in the lower panels) through the entire group. A continuous structure can be seen stretching from NGC 848 to the NW corner of the group.</h8>
-									<header>
-									</article>
-								</div>
-							</div>
-
-<br>
-							
-							<button type="button" class="collapsible">ALFALFA: A blind census of gas-bearing galaxies</button>
-							<div class="content">
-								<p>During my PhD I worked with Professors Martha Haynes and Riccardo Giovanelli on the <a href="http://egg.astro.cornell.edu/alfalfa/">ALFALFA</a> HI survey, a blind 21 cm survey out to a maximum redshift of 0.06 and covering 7,000 square degrees of the sky. ALFALFA represents the cutting edge of large area, blind HI surveys. It used the Arecibo radio telescope in Puerto Rico, the largest single dish telescope in the world at the time, and a 7 pixel feed array (ALFA). The final HI source catalogue contains over 30,000 extragalactic source and can be found <a href="http://egg.astro.cornell.edu/alfalfa/data/index.php">here</a>.</p>
-
-								<p>My research focused on the global properties of the survey, investigating the statistical trends and biases present in the dataset. This included a quantification of the impact of source confusion on current and future HI surveys (<a href="http://adsabs.harvard.edu/abs/2015MNRAS.449.1856J">Jones et al. 2015</a>) and the construction of a generic model for the contribution of confusion noise to deep HI stacking experiments (<a href="http://adsabs.harvard.edu/abs/2016MNRAS.455.1574J">Jones et al. 2016a</a>). My cloud-based tool for predicting the level of source confusion in a generic stacking experiment can be found <a href="https://mybinder.org/v2/gh/jonesmg/HI_stack_confusion/master">here</a>. I also investigated the role environment plays in influencing the shape of the HI mass function of galaxies (HIMF), finding that the ‘knee’ mass increases towards denser regions, but not finding any evidence of a change in the low-mass slope (<a href="http://adsabs.harvard.edu/abs/2016MNRAS.457.4393J">Jones et al. 2016b</a>).</p>
-
-								<div class="row" width="100%">
-								
-									<div class="6u">
-										<article class="item">
-											<a class="image full"><img src="images/confusion_ex.jpg" alt="" /></a>
-										</article>
-									</div>
-									<div class="6u">
-										<article class="item">
-											<a class="image"><img src="images/confusion_ex_spec.jpg" alt="" /></a>								
-										</article>
-									</div>
-									<article class="item">
-									<header>
-									<h8>An SDSS DR10 optical image (left) of two HI galaxies detected in ALFALFA. The Elliptical galaxy is not detected. The ALFA beam is shown as a dark circle. The HI spectra of the two galaxies taken by ALFALFA (right). The excess emission present in the offset spectrum, associated with the profile of the lower galaxy, is a telltale sign of confusion.</h8>
-									<header>
-									</article>
-								</div>
-
-								<p>My work on ALFALFA, and in particular the HIMF, has continued as a post-doc. In <a href="http://adsabs.harvard.edu/abs/2018MNRAS.477....2J">Jones et al. 2018b</a> I calculated the HIMF for the final ALFALFA sample (<a href="http://adsabs.harvard.edu/abs/2018ApJ...861...49H">Haynes et al. 2018</a>). This is the most precise measurement of the HIMF to date. However, while the ‘knee’ is determined over a cosmologically fair volume and varies little across the survey footprint, the low-mass slope is only measurable in the relatively nearby Universe (D &lt; 60 Mpc) with ALFALFA. Hence we see large shifts in the gradient of the low-mass slope in different regions of the sky. There is tentative evidence that the low-mass slope steepens within the large scale overdensity surrounding the Virgo cluster, perhaps due to the presence of gas-rich inflowing filaments, and flattens in the void in the foreground of the Pisces-Perseus supercluster. However, more investigation is required.</p>
-
-								<div class="row" width="100%">
-								
-									<div class="6u">
-										<article class="item">
-											<a class="image full"><img src="images/a99_HIMF_Veff_SF.jpg" alt="" /></a>
-										</article>
-									</div>
-									<div class="6u">
-										<article class="item">
-											<a class="image"><img src="images/a99_all_HIMF_err_ell.png" alt="" /></a>								
-										</article>
-									</div>
-									<article class="item">
-									<header>
-									<h8>The ALFALFA HIMF in the Northern Spring and Fall sky regions of the survey (left). There is a clear shift in the low-mass slope of the HIMF in these two halves of the survey, but the 'knee' mass is essentially unchanged. The plot on the right shows the 2-sigma errors bars and ellipses of various measurements of the HIMF. On key result here is that no sample has an low-mass slope similar to that of individual groups that have been studied.</h8>
-									<header>
-									</article>
-								</div>
-							</div>
-
-<br>
-							<button type="button" class="collapsible">APPSS: Infall onto a cosmic filament</button>
-							<div class="content">
-								<p>I am the co-PI (along with Rebecca Koopmann) of the Arecibo Pisces-Perseus Supercluster Survey (APPSS). This is an ALFALFA follow-up program to observe dwarf galaxies, below the ALFALFA sensitivity limit, in order to increase the source density of galaxies with known redshifts and velocity widths in the vicinity of PPS. With this dataset we aim to measure with high signal-to-noise the radial inflow of galaxies onto the supercluster filament through the use of the baryonic Tully-Fisher relation. The majority of the work for this project is being conducted by the student and faculty members of the Undergraduate ALFALFA Team (UAT, organised by Martha Haynes and Rebecca Koopmann), a network of undergraduate-focused institutions across the USA that contribute and gain research experience within the wider ALFALFA project.</p>
-							</div>
-
-			
-
-						</div>
-					</section>
-
-				<!-- CV-->
-					<section id="cv" class="three">
-						<div class="container">
-
-							<header>
-								<h2>Curriculum Vitae</h2>
-							</header>
-
-							<object data="docs/CV_MichaelGJones.pdf" type="application/pdf" width="100%" height="800">
- 
-  							<p>It appears you don't have a PDF plugin for this browser.
-  							You can <a href="docs/CV_MichaelGJones.pdf">click here</a> to
-  							download the PDF file.</p>
-  
-							</object>
-
-						</div>
-					</section>
-
-				<!-- outreach -->
-					<section id="outreach" class="four">
-						<div class="container">
-							<header>
-								<h2>Outreach & Teaching</h2>
-							</header>
-							
-							<p><b>Mentoring:</b> I have mentored several undergraduate students beginning their astronomy research careers at both Cornell and the University of Arizona, as well as a Tucson high school student. While at Cornell I co-wrote and led workshops on using Python and TOPCAT in astronomy for students in the REU program, and lectured and demostrated observing at Arecibo for members of the Undergraduate ALFALFA Team.</p>
-							
-							<p><b>Teaching:</b> I was a teaching assistant for Cornell's Astro1101 and Astro1102 courses for two years. I led two weekly sections, typically with around 20-30 students, as well as performing a guest lecture to the full class (around 200 students). I wrote and graded both homeworks and exams for these courses. I also gave guest lectures for Cornell's first-year writing seminars in astronomy.</p>
-
-							<p><b>Outreach:</b> While at UA I have lectured for a hands-on, astronomy-themed, introductory Python class for students at Pima Community College, given an Astronomy on Tap public talk, and appeared on <a href="https://www.kold.com/2022/06/19/out-this-world-discovery-how-tucson-astronomers-played-part-finding-new-stellar-system/">local TV</a> to discuss the new blue stellar systems we discovered. At Cornell I participated in numerous outreaching initiatives, such as Focus for Teens, Museum in the Dark, and Ask an Astronomer.
-						</div>
-					</section>
-
-
-				<!-- Photography -->
-					<section id="photography" class="five">
-						<div class="container">
-
-							<header>
-								<h2>Photography</h2>
-							</header>
-
-
-							<div class="row">
-								<div class="4u">
-									<article class="item">
-										<a href="images/Photography/DSC_0046.JPG" class="image full"><img src="images/Photography/DSC_0046_small.jpg" alt="" /></a>
-										<header>
-											<h3>Sunset at Cornell</h3>
-										</header>
-									</article>
-									<article class="item">
-										<a href="images/Photography/DSC_0343.JPG" class="image full"><img src="images/Photography/DSC_0343_small.jpg" alt="" /></a>
-										<header>
-											<h3>Andromeda (with only a tripod)</h3>
-										</header>
-									</article>
-									<article class="item">
-										<a href="images/Photography/DSC_0082.JPG" class="image full"><img src="images/Photography/DSC_0082_small.jpg" alt="" /></a>
-										<header>
-											<h3>Long Exposure of a Stream</h3>
-										</header>
-									</article>
-									<article class="item">
-										<a href="images/Photography/DSC_0086.JPG" class="image full"><img src="images/Photography/DSC_0086_small.jpg" alt="" /></a>
-										<header>
-											<h3>Scale Force (Lake District)</h3>
-										</header>
-									</article>
-									<article class="item">
-										<a href="images/Photography/DSC_0148.JPG" class="image full"><img src="images/Photography/DSC_0148_small.jpg" alt="" /></a>
-										<header>
-											<h3>Sunset (Norfolk, UK)</h3>
-										</header>
-									</article>
-									<article class="item">
-										<a href="images/Photography/DSC_0150.JPG" class="image full"><img src="images/Photography/DSC_0150_small.jpg" alt="" /></a>
-										<header>
-											<h3>Fall colours at Cayuga Lake (NY, USA)</h3>
-										</header>
-									</article>
-								</div>
-								<div class="4u">
-									<article class="item">
-										<a href="images/Photography/DSC_0038.JPG" class="image full"><img src="images/Photography/DSC_0038_small.jpg" alt="" /></a>
-										<header>
-											<h3>Ithaca Falls (NY, USA)</h3>
-										</header>
-									</article>
-									<article class="item">
-										<a href="images/Photography/DSC_0031.JPG" class="image full"><img src="images/Photography/DSC_0031_small.jpg" alt="" /></a>
-										<header>
-											<h3>Watkins Glen (NY, USA)</h3>
-										</header>
-									</article>
-									<article class="item">
-										<a href="images/Photography/DSC_0088.JPG" class="image full"><img src="images/Photography/DSC_0088_small.jpg" alt="" /></a>
-										<header>
-											<h3>Crummock Water (Lake District)</h3>
-										</header>
-									</article>
-									<article class="item">
-										<a href="images/Photography/DSC_0141.JPG" class="image full"><img src="images/Photography/DSC_0141_small.jpg" alt="" /></a>
-										<header>
-											<h3>Old Warped Tree</h3>
-										</header>
-									</article>
-									<article class="item">
-										<a href="images/Photography/DSC_0263.JPG" class="image full"><img src="images/Photography/DSC_0263_small.jpg" alt="" /></a>
-										<header>
-											<h3>Sunrise (Norfolk, UK)</h3>
-										</header>
-									</article>
-									<article class="item">
-										<a href="images/Photography/DSC_0291.JPG" class="image full"><img src="images/Photography/DSC_0291_small.jpg" alt="" /></a>
-										<header>
-											<h3>Rocks in West Canada Creek (NY, USA)</h3>
-										</header>
-									</article>
-								</div>
-								<div class="4u">
-									<article class="item">
-										<a href="images/Photography/DSC_0035.JPG" class="image full"><img src="images/Photography/DSC_0035_small.jpg" alt="" /></a>
-										<header>
-											<h3>Startrails through the Trees</h3>
-										</header>
-									</article>
-									<article class="item">
-										<a href="images/Photography/DSC_0069.JPG" class="image full"><img src="images/Photography/DSC_0069_small.jpg" alt="" /></a>
-										<header>
-											<h3>Webs and Morning Mist</h3>
-
-										</header>
-									</article>
-									<article class="item">
-										<a href="images/Photography/DSC_0181.JPG" class="image full"><img src="images/Photography/DSC_0181_small.jpg" alt="" /></a>
-										<header>
-											<h3>Taughannock Falls (NY, USA)</h3>
-										</header>
-									</article>
-									<article class="item">
-										<a href="images/Photography/DSC_0250.JPG" class="image full"><img src="images/Photography/DSC_0250_small.jpg" alt="" /></a>
-										<header>
-											<h3>Sunset (Hunstanton, UK)</h3>
-										</header>
-									</article>
-									<article class="item">
-										<a href="images/Photography/DSC_0241.JPG" class="image full"><img src="images/Photography/DSC_0241_small.jpg" alt="" /></a>
-										<header>
-											<h3>Sunset (Hunstanton, UK)</h3>
-										</header>
-									</article>
-									<article class="item">
-										<a href="images/Photography/DSC_0296.JPG" class="image full"><img src="images/Photography/DSC_0296_small.jpg" alt="" /></a>
-										<header>
-											<h3>Reflections (Adirondacks, NY, USA)</h3>
-										</header>
-									</article>
-								</div>
-							</div>
-
-						<article class="item">
-							<a href="images/Photography/Iroquois_pan.JPG" class="image full"><img src="images/Photography/Iroquois_pan_small.jpg" alt="" /></a>
-							<header>
-									<h3>Panorama from the summit of Mount Iroquois (Adirondacks, NY, USA)</h3>
-							</header>
-						</article>
-
-
-
-
-
-							<div class="row">
-								<div class="4u">
-									<article class="item">
-										<a href="images/Photography/DSC_0221.JPG" class="image full"><img src="images/Photography/DSC_0221_small.jpg" alt="" /></a>
-										<header>
-											<h3>Hadrian's Wall</h3>			
-										</header>
-									</article>
-
-									<article class="item">
-										<a href="images/Photography/DSC_0236.JPG" class="image full"><img src="images/Photography/DSC_0236_small.jpg" alt="" /></a>
-										<header>
-											<h3>The Highlands from Ben Nevis</h3>			
-										</header>
-									</article>
-
-									<article class="item">
-										<a href="images/Photography/DSC_0073.JPG" class="image full"><img src="images/Photography/DSC_0073_small.jpg" alt="" /></a>
-										<header>
-											<h3>Y Lliwedd from Snowdon</h3>			
-										</header>
-									</article>
-								</div>
-								<div class="4u">
-									<article class="item">
-										<a href="images/Photography/DSC_0308.JPG" class="image full"><img src="images/Photography/DSC_0308_small.jpg" alt="" /></a>
-										<header>
-											<h3>Ben Nevis</h3>			
-										</header>
-									</article>
-
-									<article class="item">
-										<a href="images/Photography/DSC_0051.JPG" class="image full"><img src="images/Photography/DSC_0051_small.jpg" alt="" /></a>
-										<header>
-											<h3>Llyn Llydaw from Snowdon</h3>			
-										</header>
-									</article>
-								</div>
-								<div class="4u">
-									<article class="item">
-										<a href="images/Photography/DSC_0074.JPG" class="image full"><img src="images/Photography/DSC_0074_small.jpg" alt="" /></a>
-										<header>
-											<h3>Glen Nevis</h3>			
-										</header>
-									</article>
-
-									<article class="item">
-										<a href="images/Photography/DSC_0255.JPG" class="image full"><img src="images/Photography/DSC_0255_small.jpg" alt="" /></a>
-										<header>
-											<h3>Ruta de los volances, La Palma</h3>			
-										</header>
-									</article>
-
-									<article class="item">
-										<a href="images/Photography/DSC_0079.JPG" class="image full"><img src="images/Photography/DSC_0079_small.jpg" alt="" /></a>
-										<header>
-											<h3>Tenerife from La Palma</h3>			
-										</header>
-									</article>
-								</div>
-							</div>
-						</div>
-					</section>				
-			
-			</div>
-
-		<!-- Footer -->
-			<div id="footer">
-				
-				<!-- Copyright -->
-					<div class="copyright">
-						<p>&copy; 2018 Michael G Jones. All rights reserved.</p>
-						<ul class="menu">
-							<li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
-						</ul>
-					</div>
-				
-			</div>
-
-		<script>
-		var coll = document.getElementsByClassName("collapsible");
-		var i;
-
-		for (i = 0; i < coll.length; i++) {
-  			coll[i].addEventListener("click", function() {
-    			this.classList.toggle("active");
-    			var content = this.nextElementSibling;
-    			if (content.style.maxHeight){
-      				content.style.maxHeight = null;
-    			} else {
-      				content.style.maxHeight = content.scrollHeight + "px";
-    			} 
-  			});
-		}
-		</script>
-
-	</body>
+</body>
 </html>
